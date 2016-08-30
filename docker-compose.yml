@@ -86,6 +86,15 @@ actionrunner:
   volumes_from:
     - data
 
+web:
+  image: stackstorm/st2web
+  links:
+    - api
+    - auth
+  ports:
+    - 80:80
+    - 443:443
+
 ## External Services
 mongo:
   image: mongo

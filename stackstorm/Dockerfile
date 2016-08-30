@@ -15,6 +15,7 @@ RUN dpkg -i /tmp/st2_${ST2_VERSION}_amd64.deb && rm -r /tmp/st2_${ST2_VERSION}_a
 
 ADD ./conf/st2.conf.template /st2.conf.template
 RUN md5sum /etc/st2/st2.conf > /st2.conf.orig.md5
+ADD ./conf/logging.exporter.conf /etc/st2/logging.exporter.conf
 
 COPY docker-entrypoint.sh /entrypoint.sh
 

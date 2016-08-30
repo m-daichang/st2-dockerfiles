@@ -70,7 +70,7 @@ Starting st2dockerfiles_data_1
 
 以下にアクセスしてください。 `st2admin / Ch@ngeMe`でログインすることができます。
 
-https://localhost/
+[https://localhost/](https://localhost/)
 
 # Reference
 

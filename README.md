@@ -11,8 +11,7 @@ StackStormのコンポーネントをDockerで起動するためのリポジト�
 
 * st2webの追加
 * st2streamが起動するように修正
-
-現状では、st2exporterは起動しません。
+* Baseイメージを`debian/wheezy`から`el/7`に変更
 
 # 手順
 
@@ -71,6 +70,10 @@ Starting st2dockerfiles_data_1
 以下にアクセスしてください。 `st2admin / Ch@ngeMe`でログインすることができます。
 
 [https://localhost/](https://localhost/)
+
+# うまく動かないときは
+
+`data`コンテナ起動時に異常終了する場合は、 `clean.sh`を実行し、既存のイメージを全て破棄してから再度`build.sh`を実行してください。
 
 # Reference
 

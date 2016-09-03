@@ -1,17 +1,18 @@
-FROM debian:wheezy
+FROM centos:7
 
 ARG ST2_VERSION
 ARG ST2_REPO=stable
-ARG ST2_PACKAGE=https://packagecloud.io/StackStorm/${ST2_REPO}/packages/debian/wheezy/st2_${ST2_VERSION}_amd64.deb/download
+ARG ST2_PACKAGE=https://packagecloud.io/StackStorm/${ST2_REPO}/packages/el/7/st2-${ST2_VERSION}.x86_64.rpm/download
+ARG ST2_YUM_REPO=https://packagecloud.io/install/repositories/StackStorm/stable/config_file.repo?os=centos&dist=7&source=script
 
 LABEL com.stackstorm.version="${ST2_VERSION}"
 
-ADD ./sources.list /etc/apt/ 
+ADD ${ST2_YUM_REPO} /etc/yum.repos.d/StackStorm_stable.repo
 
-RUN apt-get -y update && apt-get -y install adduser procps python2.7 libffi5 libyaml-0-2 git libpcre3 libpython2.7 libxml2 python-dev libssl-dev libffi-dev sudo
-
-ADD ${ST2_PACKAGE} /tmp/st2_${ST2_VERSION}_amd64.deb
-RUN dpkg -i /tmp/st2_${ST2_VERSION}_amd64.deb && rm -r /tmp/st2_${ST2_VERSION}_amd64.deb && apt-get clean
+RUN yum -y update
+#ADD ${ST2_PACKAGE} /tmp/st2_${ST2_VERSION}.x86_64.rpm
+#RUN yum -y install /tmp/st2-${ST2_version}.x86_64.rpm
+RUN yum -y install st2
 
 ADD ./conf/st2.conf.template /st2.conf.template
 RUN md5sum /etc/st2/st2.conf > /st2.conf.orig.md5

@@ -2,7 +2,7 @@ FROM nginx
 
 ARG ST2_VERSION
 ARG ST2_REPO=stable
-ARG ST2_PACKAGE=https://packagecloud.io/StackStorm/${ST2_REPO}/packages/debian/wheezy/st2web_${ST2_VERSION}_amd64.deb/download
+ARG ST2_PACKAGE=https://packagecloud.io/StackStorm/${ST2_REPO}/packages/ubuntu/trusty/st2web_${ST2_VERSION}_amd64.deb/download
 
 ADD ./st2.conf /etc/nginx/conf.d/st2.conf
 

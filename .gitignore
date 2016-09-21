@@ -4,3 +4,4 @@ stackstorm/pkg/*
 
 .vagrant
 .bundle
+.DS_Store

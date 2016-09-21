@@ -45,7 +45,7 @@ st2dockerfiles_web_1                nginx -g daemon off;             Up       0.
 
 ## コマンドラインから利用
 
-`clinet`コンテナを利用してください。
+`client`コンテナを利用してください。
 
 ```
 $ docker-compose run client st2 action list --pack=core
